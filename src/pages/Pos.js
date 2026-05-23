@@ -54,7 +54,7 @@ function Pos() {
         const newDevice = {};
         for (let i = 1; i <= 3; i++) {
           if (prev[i].running && prev[i].startTime) {
-            const elapsed = Math.floor((Date.now() - prev[i].startTime) / 10);
+            const elapsed = Math.floor((Date.now() - prev[i].startTime) / 1000);
             newDevice[i] = { ...prev[i], seconds: elapsed };
           } else {
             newDevice[i] = { ...prev[i] };
@@ -63,7 +63,7 @@ function Pos() {
 
         return newDevice;
       });
-    }, 10);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -87,7 +87,7 @@ function Pos() {
       [id]: {
         ...prev[id],
         running: !prev[id].running,
-        startTime: Date.now() - prev[id].seconds * 10,
+        startTime: Date.now() - prev[id].seconds * 1000,
       },
     }));
   };
@@ -99,6 +99,7 @@ function Pos() {
         ...prev[id],
         running: false,
         seconds: 0,
+        startTime: null,
         orders: [],
         mode: "multi",
       },
