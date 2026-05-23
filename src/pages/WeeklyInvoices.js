@@ -72,7 +72,7 @@ function WeeklyInvoices() {
     <div>
       {weekInvoices.length === 0 ? (
         <div className="empty-state">
-          <h2>No Invoices Found</h2>
+          <h2>No Invoices Found....</h2>
           <p>
             You haven't recorded any daily closures yet. Please come back later
             after closing your workday.
